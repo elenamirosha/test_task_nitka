@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documents</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div>
+    <h1 class="text-center">Documents</h1>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>DOI</th>
+            <th>Title</th>
+            <th>Summary</th>
+            <th>Tags</th>
+            <th>Year</th>
+            <th>Organization</th>
+            <th>Country</th>
+            <th>Language</th>
+            <th>PDF Link</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for document in documents %}
+        <tr>
+            <td>{{ document[0] }}</td>
+            <td>{{ document[1] }}</td>
+            <td>{{ document[2] }}</td>
+            <td>{{ document[3] }}</td>
+            <td>{{ document[4] }}</td>
+            <td>{{ document[5] }}</td>
+            <td>{{ document[6] }}</td>
+            <td>{{ document[7] }}</td>
+            <td>{{ document[8] }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            {% if page == 1 %}
+            <li class="page-item disabled">
+                {% else %}
+            <li class="page-item">
+                {% endif %}
+                <a class="page-link" href="/?page={{ (page - 1) }}" tabindex="-1">Previous</a>
+            </li>
+            <li class="page-item active">
+          <span class="page-link">
+            {{ page }}
+            <span class="sr-only">(current)</span>
+          </span>
+            </li>
+            {% if page == lastPage %}
+            <li class="page-item disabled">
+                {% else %}
+            <li class="page-item">
+                {% endif %}
+                <a class="page-link" href="/?page={{ (page + 1) }}">Next</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+</body>
+</html>
